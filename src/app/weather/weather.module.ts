@@ -4,6 +4,7 @@ import { WeatherContainer } from './weather.container';
 import { WeatherService } from './weather.service';
 import { SearchComponent } from './components/search/search.component';
 import { ResultsComponent } from './components/results/results.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 // IF YOU DECIDE TO USE NG-RX YOU'LL NEED TO UNCOMMENT SOME LINES
@@ -14,6 +15,7 @@ import { ResultsComponent } from './components/results/results.component';
 @NgModule({
   imports: [
     CommonModule,
+    ReactiveFormsModule
     // StoreModule.forFeature('weather', reducers),
     // EffectsModule.forFeature(effects)
   ],
