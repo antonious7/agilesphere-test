@@ -2,6 +2,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { WeatherContainer } from './weather.container';
 import { Store } from '@ngrx/store';
+import { IState } from './store';
+import { SearchCitiesAction } from './store/actions/weather';
 
 describe('WeatherContainer', () => {
   let component: WeatherContainer;
@@ -31,5 +33,12 @@ describe('WeatherContainer', () => {
     expect(component).toBeTruthy();
   });
 
-  // PLEASE IMPLEMENT MORE TESTS
+  it('should dispatch SearchCityAction on search', () => {
+    const mockSearch = 'test';
+    const store: jasmine.SpyObj<Store<IState>> = TestBed.get(Store);
+    store.dispatch.and.callThrough();
+    component.citySearch(mockSearch);
+
+    expect(store.dispatch).toHaveBeenCalledWith(new SearchCitiesAction(mockSearch));
+  });
 });
