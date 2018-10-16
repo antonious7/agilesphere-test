@@ -1,6 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { SearchComponent } from './search.component';
 
@@ -48,5 +47,14 @@ describe('SearchComponent', () => {
     fixture.detectChanges();
 
     expect(component.onSearch.emit).toHaveBeenCalledWith(mockValue);
+  });
+
+  it('should set filter to passed in value', () => {
+    const mockValue = 'test';
+    component.value = mockValue;
+    fixture.detectChanges();
+
+    const element: HTMLInputElement = fixture.nativeElement.querySelector('#city');
+    expect(element.value).toEqual(mockValue);
   });
 });

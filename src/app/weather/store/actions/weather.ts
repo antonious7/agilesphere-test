@@ -1,4 +1,5 @@
 import { Action } from '@ngrx/store';
+import { Weather } from '../../../model/weather';
 
 export enum WeatherActionType {
     SEARCH_CITIES = '[Weather] search cities',
@@ -13,7 +14,7 @@ export class SearchCitiesAction implements Action {
 
 export class SearchCitiesActionSuccess implements Action {
     readonly type = WeatherActionType.SEARCH_CITIES_SUCCESS;
-    constructor(public payload: string) {}
+    constructor(public payload: Weather) {}
 }
 
 export class SearchCitiesActionError implements Action {
