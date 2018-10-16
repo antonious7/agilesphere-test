@@ -9,6 +9,8 @@ import { StoreModule, ActionReducer } from '@ngrx/store';
 import { IState, reducers } from './weather/store';
 import { environment } from '../environments/environment';
 import { storeLogger } from 'ngrx-store-logger';
+import { EffectsModule } from '@ngrx/effects';
+import { WeatherEffects } from './weather/store/effects/weather';
 
 export function logger(reducer: ActionReducer<IState>): any {
   return storeLogger()(reducer);
@@ -24,7 +26,8 @@ export const metaReducers = environment.production ? [] : [logger];
     AppRoutingModule,
     WeatherModule,
     HttpClientModule,
-    StoreModule.forRoot(reducers, {metaReducers})
+    StoreModule.forRoot(reducers, {metaReducers}),
+    EffectsModule.forRoot([WeatherEffects])
   ],
   providers: [],
   bootstrap: [AppComponent]
