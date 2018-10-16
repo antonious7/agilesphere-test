@@ -1,5 +1,4 @@
 import { Action } from '@ngrx/store';
-import { Action } from 'rxjs/scheduler/Action';
 
 export enum WeatherActionType {
     SEARCH_CITIES = '[Weather] search cities',
@@ -22,7 +21,7 @@ export class SearchCitiesActionError implements Action {
     constructor(public payload: string) {}
 }
 
-export type WeatherAction =
+export type WeatherActions =
     SearchCitiesAction |
     SearchCitiesActionSuccess |
     SearchCitiesActionError;
